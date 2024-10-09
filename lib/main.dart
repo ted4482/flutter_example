@@ -3,24 +3,41 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(MaterialApp(
     home: Scaffold(
-      body: MyApp(),
+      appBar: AppBar(
+        title: Text('Study to Container'),
+      ),
+      body: CustomContainer(),
     ),
   ));
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class CustomContainer extends StatelessWidget {
+  const CustomContainer({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Center(
-        child: Text(
-          style: TextStyle(
-              color: Colors.black, fontSize: 40),
-          "Hello, Flutter",
+    return Center(
+      child: Container(
+        width: 300, // double.infinity
+        height: 300,
+        padding: EdgeInsets.fromLTRB(10, 12, 10, 12),
+        margin: EdgeInsets.symmetric(vertical: 24,horizontal: 30),
+        decoration: BoxDecoration( // BoxDecoration 사용시 Container.color 사용불가
+            color: Color(0xFFEF9A9A), // Colors.red.shade200
+            border: Border.all(
+              color: Colors.red, width: 5, style: BorderStyle.solid,
+            ),
+            borderRadius: BorderRadius.circular(50),
+            boxShadow: [
+              BoxShadow(color: Colors.black.withOpacity(0.3), offset: Offset(6,6), blurRadius: 10, spreadRadius: 10),
+              BoxShadow(color: Colors.blue.withOpacity(0.3), offset: Offset(-6,-6), blurRadius: 10, spreadRadius: 10),
+            ]
         ),
+        child: Center(child: Container(
+            color: Colors.yellow,
+            child: Text("Hello, Container"))),
       ),
     );
   }
 }
+
