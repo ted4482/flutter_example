@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+const assetImagePath = 'assets/images/';
+const bannerImage = '$assetImagePath/banner.jpg';
+
 void main() {
   runApp(
     const MaterialApp(
@@ -14,7 +17,9 @@ class HomeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Flutter Callback"),),
+      appBar: AppBar(
+        title: const Text("Local 파일 활용하기"),
+      ),
       body: const MyBody(),
     );
   }
@@ -25,58 +30,12 @@ class MyBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const TestWidget();
-  }
-}
-
-class TestWidget extends StatefulWidget {
-  const TestWidget({super.key});
-
-  @override
-  State<TestWidget> createState() => _TestWidgetState();
-}
-
-class _TestWidgetState extends State<TestWidget> {
-  int value = 0;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text('Count : $value', style: const TextStyle(fontSize: 30),),
-          TestButton(addCounter), // 함수의 이름을 넣는다.
-        ]
-    );
-  }
-
-  void addCounter(addValue) {
-    setState(() => value = addValue + value) ;
-  }
-}
-
-class TestButton extends StatelessWidget {
-  const TestButton(this.callback, {super.key});
-
-  // final VoidCallback callback;
-  final Function(int) callback;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        margin: const EdgeInsets.symmetric(vertical: 8),
-        width: double.infinity,
-        child: InkWell(
-          onTap: () => callback.call(1),
-          onDoubleTap: () => callback.call(5),
-          onLongPress: () => callback.call(10),
-          child: Center(
-              child: Container(
-                  padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
-                  decoration: BoxDecoration(border: Border.all()),
-                  child: const Text('Up Counter', style: TextStyle(fontSize: 24),)
-              )
-          ),
-        ));
+    return Center(
+        child: Column(
+            // 네트워크 사용시 추천 cached_network_image
+            children: [
+              Image.asset(bannerImage),
+              Image.network('https://naverpa-phinf.pstatic.net/MjAyMzExMjJfMjcy/MDAxNzAwNjE0NTI2NjQw.iC79XXU2zXiefH2zO0TPstP-0xm3nvn9COH7liLiIFsg.45NW7s60KRiJIdgkIaDJbdm6qLFzeAOq2U4BgmMw8Ssg.PNG/%ED%85%8C%EC%8A%A4%ED%8A%B8_%EC%99%84%EC%84%B1%EC%9A%A9_17006145266168860938584154193559.png',)
+        ]));
   }
 }
