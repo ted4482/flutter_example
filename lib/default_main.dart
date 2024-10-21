@@ -17,7 +17,7 @@ class HomeWidget extends StatelessWidget {
       appBar: AppBar(
         title: const Text(''),
       ),
-      body: Placeholder(),
+      body: const Placeholder(),
     );
   }
 }

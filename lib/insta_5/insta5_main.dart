@@ -23,12 +23,7 @@ class Insta5App extends StatelessWidget {
         bottomNavigationBarTheme: BottomNavigationBarThemeData(
           selectedItemColor: Colors.black,
           unselectedItemColor: Colors.grey.shade600
-        ),
-        textTheme: const TextTheme(
-         bodyLarge: TextStyle(color: Colors.red),
-         bodyMedium: TextStyle(color: Colors.red),
-         bodySmall: TextStyle(color: Colors.red),
-        ),
+        )
       ),
       home: const Insta5Home(),
     );
